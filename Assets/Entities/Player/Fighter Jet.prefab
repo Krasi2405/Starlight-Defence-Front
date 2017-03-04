@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d976f2067b40347a2b2e79e6ddb2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 10
+  cooldown: 12
   identifier: shield
 --- !u!114 &114000010462499978
 MonoBehaviour:

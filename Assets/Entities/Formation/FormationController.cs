@@ -5,10 +5,11 @@ public class FormationController : MonoBehaviour {
 
     public GameObject enemyPrefab;
     public float speed = 2f;
-
     public float width = 10f;
     public float height = 5f;
     public float spawnDelay = 0.5f;
+
+    public bool respawn = false;
 
     private float xMin = -3.5f;
     private float xMax = 3.5f;
@@ -36,7 +37,14 @@ public class FormationController : MonoBehaviour {
         Move();
         if(AllMembersDead())
         {
-            SpawnUntilFull();
+            if (respawn)
+            {
+                SpawnUntilFull();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
         
 

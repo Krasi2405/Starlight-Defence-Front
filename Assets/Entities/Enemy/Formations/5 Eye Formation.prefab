@@ -207,6 +207,7 @@ MonoBehaviour:
   width: 2.5
   height: 1.5
   spawnDelay: 0.5
+  respawn: 1
 --- !u!114 &114000011331400974
 MonoBehaviour:
   m_ObjectHideFlags: 1

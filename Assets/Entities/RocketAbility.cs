@@ -8,6 +8,8 @@ public class RocketAbility : MonoBehaviour {
     public float projectileSpeed = 10f;
     public float destroyTime = 5f;
     public string identifier = "identity";
+    public AudioClip launchRocketSound;
+    public bool mobile = false;
 
     private AbilityCooldown cooldown;
     
@@ -30,10 +32,22 @@ public class RocketAbility : MonoBehaviour {
     }
 
 	void Update () {
-        if(Input.GetKeyDown(KeyCode.LeftShift) && cooldown.canBeUsed)
+        if (!mobile)
         {
-            ActivateAbility();
-            cooldown.Reset();
+            if (Input.GetKeyDown(KeyCode.LeftShift) && cooldown.canBeUsed)
+            {
+                ActivateAbility();
+                cooldown.Reset();
+            }
+        }
+        else
+        {
+            if(Input.GetMouseButtonDown(0) && Input.mousePosition.x < Screen.width / 2 && cooldown.canBeUsed)
+            {
+                ActivateAbility();
+                cooldown.Reset();
+            }
+            
         }
 	}
 
@@ -41,6 +55,7 @@ public class RocketAbility : MonoBehaviour {
     {
         foreach(Vector3 position in rocketPositions)
         {
+            AudioSource.PlayClipAtPoint(launchRocketSound, transform.position);
             Fire(position);
         }
     }

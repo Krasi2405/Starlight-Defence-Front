@@ -175,15 +175,18 @@ public class PlayerController : MonoBehaviour {
         /*
         playerPos.x = Input.mousePosition.x;
         playerPos.y = Input.mousePosition.y;
-
-        // Restrict player to game bounds.
-        
         */
-        playerPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z - Camera.main.transform.position.z));
+
+        // playerPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z - Camera.main.transform.position.z));
+
+        playerPos.x += Input.acceleration.x * 0.5f;
+        playerPos.y += Input.acceleration.z * 0.5f;
+
         playerPos.x = Mathf.Clamp(playerPos.x, xMin, xMax);
         playerPos.y = Mathf.Clamp(playerPos.y, yMin, yMax);
 
         gameObject.transform.position = playerPos;
+        
 
 
     }

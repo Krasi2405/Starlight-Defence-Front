@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour {
     public float destroyTime = 5f;
     public float shotsPerSecond = 0.5f;
     public int scoreValue = 100;
+    public Vector3[] shotPositions = { new Vector3(0, 0, 0) };
 
     private ScoreKeeper scoreKeeper;
 
@@ -35,12 +36,14 @@ public class Enemy : MonoBehaviour {
 
     void Fire()
     {
-        Vector3 shotPos = new Vector3(transform.position.x, transform.position.y, 2);
-        GameObject shot = Instantiate(projectile, shotPos, Quaternion.identity) as GameObject;
-        shot.GetComponent<Rigidbody2D>().velocity = new Vector3(0, -projectileSpeed, 0);
-        Destroy(shot, destroyTime);
-
+        foreach (Vector3 shotPosition in shotPositions) {
+            Vector3 shotPos = new Vector3(transform.position.x + shotPosition.x, transform.position.y + shotPosition.y, 2);
+            GameObject shot = Instantiate(projectile, shotPos, Quaternion.identity) as GameObject;
+            shot.GetComponent<Rigidbody2D>().velocity = new Vector3(0, -projectileSpeed, 0);
+            Destroy(shot, destroyTime);
+        }
         AudioSource.PlayClipAtPoint(shotAudio, transform.position);
+
     }
 
     void OnTriggerEnter2D(Collider2D collider)

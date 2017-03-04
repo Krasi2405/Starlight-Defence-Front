@@ -105,12 +105,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotAudio: {fileID: 8300000, guid: 904e0915d6c909946a568c5b71a96f42, type: 3}
   explosion: {fileID: 8300000, guid: e86f7c1fa62e1f94191b68bf8072917e, type: 3}
-  health: 1000
+  health: 2500
   projectile: {fileID: 1000014127271322, guid: f90634fc83b6bd344aa2cbd047cf2ac1, type: 2}
   projectileSpeed: 5
   destroyTime: 5
   shotsPerSecond: 1
   scoreValue: 100
+  shotPositions:
+  - {x: -0.25, y: -2, z: 0}
+  - {x: -0.5, y: -2, z: 0}
+  - {x: 0.25, y: -2, z: 0}
+  - {x: 0.5, y: -2, z: 0}
 --- !u!212 &212000013453241354
 SpriteRenderer:
   m_ObjectHideFlags: 1
